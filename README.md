@@ -3,7 +3,7 @@
 Add Dependency                                         
         implementation 'com.google.android.gms:play-services-auth:20.6.0'
 
-Configure a Google API Console project
+# Configure a Google API Console project
 
 Open your project in the API Console, or create a project if you don't already have one.
 
