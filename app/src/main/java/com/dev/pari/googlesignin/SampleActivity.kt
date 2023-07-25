@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.dev.pari.googlelogin.GoogleSignInActivity
 import com.dev.pari.googlesignin.databinding.ActivityMainBinding
 
 class SampleActivity : AppCompatActivity() {
