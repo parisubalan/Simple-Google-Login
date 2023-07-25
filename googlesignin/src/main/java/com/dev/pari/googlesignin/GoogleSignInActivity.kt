@@ -41,6 +41,17 @@ open class GoogleSignInActivity(context: Activity) : AppCompatActivity() {
         return data
     }
 
+    // Get current account details
+    fun getLoginAccountDetails(): LiveData<GoogleSignInAccount?> {
+        val data = MediatorLiveData<GoogleSignInAccount?>()
+        val account = GoogleSignIn.getLastSignedInAccount(mContext)
+        if (account != null)
+            data.postValue(account)
+        else
+            data.postValue(null)
+        return data
+    }
+
     // Check if already signed or not
     fun ifAlreadyLogin(): Boolean {
         val account = GoogleSignIn.getLastSignedInAccount(mContext)
@@ -77,8 +88,5 @@ open class GoogleSignInActivity(context: Activity) : AppCompatActivity() {
         }
     }
 
-    fun getLoginResponse(): MutableLiveData<GoogleSignInAccount> {
-        return responseCallBack
-    }
 
 }
