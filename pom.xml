@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.parisubalan</groupId>
     <artifactId>Simple-Google-Login</artifactId>
-    <version>1.0.0-beta.04</version>
+    <version>1.0.01</version>
     <packaging>pom</packaging>
     <description>Simple Google Login</description>
 </project>
