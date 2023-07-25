@@ -1,7 +1,10 @@
-package com.dev.pari.googlesignin
+package com.dev.pari.googlelogin
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
@@ -26,8 +29,11 @@ open class GoogleSignInActivity(context: Activity) : AppCompatActivity() {
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail()
                 .build()
         googleSignClient = GoogleSignIn.getClient(mContext, googleSignInOpt)
-
-        mContext.startActivityForResult(googleSignClient.signInIntent, 100)
+        if (isNetworkAvailable())
+            mContext.startActivityForResult(googleSignClient.signInIntent, 100)
+        else
+            Toast.makeText(mContext, "Please check your internet connections", Toast.LENGTH_SHORT)
+                .show()
     }
 
     // Check if already signed or not here then get last signed account details
@@ -86,6 +92,17 @@ open class GoogleSignInActivity(context: Activity) : AppCompatActivity() {
                 Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+        val isConnect: Boolean
+        val manager: ConnectivityManager =
+            mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        isConnect = manager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+            ?.state == NetworkInfo.State.CONNECTED || manager.getNetworkInfo(
+            ConnectivityManager.TYPE_WIFI
+        )?.state == NetworkInfo.State.CONNECTED
+        return isConnect
     }
 
 

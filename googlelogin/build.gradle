@@ -4,10 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.dev.pari.googlesignin'
+    namespace 'com.dev.pari.googlelogin'
     compileSdk 33
 
     defaultConfig {
+        applicationId "com.dev.pari.googlelogin"
         minSdk 21
         targetSdk 33
         versionCode 1

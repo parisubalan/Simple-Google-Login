@@ -1,4 +1,4 @@
-package com.dev.pari.googlesignin
+package com.dev.pari.googlelogin
 
 import org.junit.Test
 
